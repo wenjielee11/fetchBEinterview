@@ -10,7 +10,7 @@ import com.fetchinterview.fetchinterview.data.TransactionRepository;
 import com.fetchinterview.fetchinterview.model.Transaction;
 
 @RestController
-public class PointsController {
+public class TransactionController {
     TransactionRepository db = new TransactionRepository();
 
     @PostMapping("/add")

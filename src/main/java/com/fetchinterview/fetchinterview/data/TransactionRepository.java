@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fetchinterview.fetchinterview.model.Transaction;
 
 /**
@@ -98,20 +99,16 @@ public class TransactionRepository{
         }
         while(points > 0){
             // Gets the oldest payer and points that was stored in the queue
-            System.out.println("Current points spending: "+ points);
-            System.out.println("Current total: "+ totalPoints);
             Transaction oldestTransaction = transactionQueue.peek();
-            System.out.println("Current old transaction: "+ oldestTransaction);
             Transaction payerTotalPoints = transactionMap.get(oldestTransaction.payer).getFirst(); // Gets the node that stores the total points for this payer
                 
-
             long balance = points - oldestTransaction.points;
             if(balance >=0){
                 // This Payer's points are just or not enough to cover the spending
                 payerTotalPoints.points -= oldestTransaction.points;
                 totalPoints -= oldestTransaction.points;
                  // Add it to the collection of payer and points spent. 
-                result.put(oldestTransaction.payer, result.getOrDefault(oldestTransaction.payer, 0L) + oldestTransaction.points);
+                result.put(oldestTransaction.payer, result.getOrDefault(oldestTransaction.payer, 0L) - oldestTransaction.points);
                 // Set the new balance.
                 points = balance;
                 // Move on to the next payer.
@@ -123,22 +120,28 @@ public class TransactionRepository{
                 payerTotalPoints.points -= points;
                 totalPoints -= points;
                  // Add it to the collection of payer and points spent. 
-                result.put(oldestTransaction.payer, result.getOrDefault(oldestTransaction.payer, 0L) + points);
+                result.put(oldestTransaction.payer, result.getOrDefault(oldestTransaction.payer, 0L) - points);
                 points = 0;
             } 
         }
+       
+        
         // Creating response body fitting the sample response given in the prompt
-        String resultString = "[\n";
+        LinkedList<Result> resList = new LinkedList<>();
         Iterator<Entry<String, Long>> it = result.entrySet().iterator();
         while(it.hasNext()){
             Entry<String, Long> mapEntry = it.next();
-            resultString+="{ "+ "\"payer\" : \"" + mapEntry.getKey()+"\", " + " \"points\" : -"+mapEntry.getValue()+" }";
-            if(it.hasNext()){
-                resultString+=",\n";
-            }
+            resList.add(new Result(mapEntry.getKey(), mapEntry.getValue()));
         }
-        resultString+="\n]";
-        return ResponseEntity.ok(resultString);
+       
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String jsonResult = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(resList);
+            return ResponseEntity.ok(jsonResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
     }
 
     /**
@@ -146,18 +149,42 @@ public class TransactionRepository{
      * @return a HTTP code signaling the good request and a body of the payers and points.
      */
     public ResponseEntity<String> getBalance(){
-        String resultString ="{\n";
         Iterator<Entry<String, LinkedList<Transaction>>> it = transactionMap.entrySet().iterator();
+        HashMap<String, Long> result = new HashMap<>(transactionMap.size());
+
         while(it.hasNext()){
             Entry<String, LinkedList<Transaction>> mapEntry = it.next();
-            resultString+="\""+ mapEntry.getKey()+"\" :"+ mapEntry.getValue().getFirst().points;
-            if(it.hasNext()){
-                resultString+=",\n";
-            }
+            result.put(mapEntry.getKey(), mapEntry.getValue().getFirst().points);
         }
-        resultString+="\n}";
-        return ResponseEntity.ok(resultString);
+         ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String jsonResult = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+            return ResponseEntity.ok(jsonResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
     }
+    /**
+     * Class for Jackson to serialize data. Since it uses reflection, it needs public getter methods. 
+     */
+    class Result{
+        String payer;
+        long points;
+        
+        Result(String payer, long points){
+            this.points = points;
+            this.payer = payer;
+        }
+        public String getPayer(){
+            return payer;
+        }
+        public long getPoints(){
+            return points;
+        } 
+        
+    }
+
 }
 
 

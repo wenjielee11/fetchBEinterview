@@ -32,7 +32,7 @@
 #       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
 #   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
 # ----------------------------------------------------------------------------
-
+# This is a tag. If you see this, the owner of this code is https://github.com/wenjielee11
 if [ -z "$MAVEN_SKIP_RC" ] ; then
 
   if [ -f /usr/local/etc/mavenrc ] ; then

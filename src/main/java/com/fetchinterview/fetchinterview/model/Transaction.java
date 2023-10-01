@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Transaction{
+    
     public final String payer;
     public long points;
     public final LocalDateTime timeStamp;
@@ -24,6 +25,7 @@ public class Transaction{
         this.points = points;
         this.timeStamp = timeStamp;
     }
+    
     public LocalDateTime getTimeStamp(){
         return this.timeStamp;
     }
