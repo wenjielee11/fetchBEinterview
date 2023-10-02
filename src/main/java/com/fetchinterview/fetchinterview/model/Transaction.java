@@ -25,13 +25,24 @@ public class Transaction{
         this.points = points;
         this.timeStamp = timeStamp;
     }
+
     
     public LocalDateTime getTimeStamp(){
         return this.timeStamp;
     }
+
     @Override
     public String toString(){
         return "Payer: "+ payer + "points: "+ points + "timeStamp: "+ timeStamp;
+    }
+
+    @Override
+    public boolean equals(Object o1){
+        Transaction o = ((Transaction) o1);
+        if(payer.equals(o.payer) && points == o.points && timeStamp.compareTo(o.timeStamp) == 0){
+            return true;
+        }
+        return false;
     }
 }
 

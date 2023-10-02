@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fetchinterview.fetchinterview.model.Transaction;
+import com.fetchinterview.fetchinterview.service.TransactionService;
 
 /**
  * This class implements the methods to handle transactions that will be called by the REST controller.
@@ -46,14 +47,16 @@ public class TransactionRepository{
     public long totalPoints;
     // To store the transactions. First node of the linked list contains a dummy transaction node
     // That stores the total accumulated points of its respective payer.
-    HashMap<String, LinkedList<Transaction>> transactionMap;
+    public HashMap<String, LinkedList<Transaction>> transactionMap;
     // To order the transactions based on timestamps.
-    PriorityQueue <Transaction> transactionQueue;
+    public PriorityQueue <Transaction> transactionQueue;
     static Comparator<Transaction> transactionComparator = Comparator.comparing(Transaction::getTimeStamp);
+
 
     public TransactionRepository(){
         transactionMap = new HashMap<String, LinkedList<Transaction>>();
         transactionQueue = new PriorityQueue<>(transactionComparator);
+
         totalPoints= 0;
     }
 
@@ -76,9 +79,11 @@ public class TransactionRepository{
         if(tempPoints + trans.points < 0){ // A payer's points can never go below 0
             return ResponseEntity.badRequest().build();
         }
+
         tempList.getFirst().points += trans.points; // store new points into total points of payer.
         totalPoints += trans.points;
         transactionQueue.add(new Transaction(trans.payer, trans.points, trans.timeStamp));
+        tempList.add(trans);
         return ResponseEntity.ok().build();
     }
 
