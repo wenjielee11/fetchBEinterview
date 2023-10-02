@@ -65,9 +65,9 @@ curl -H "Content-Type: application/json" -d '{"points":100}' http://localhost:80
 Response :
 ```
 [
-    "DANNON -100",
-    "UNILEVER -200",
-    "MILLER COORS -4700"
+{ "payer": "UNILEVER", "points": -200 },
+{ "payer": "MILLER COORS", "points": -4,700 }
+{ "payer": "DANNON", "points": -100 },
 ]
 ```
 
@@ -85,11 +85,11 @@ curl http://localhost:8080/balance
 
 Response : 
 ```
-[
-    "UNILEVER : 0",
-    "MILLER COORS : 5300",
-    "DANNON : 1000"
-]
+{
+    "UNILEVER" : 0,
+    "MILLER COORS" : 5300,
+    "DANNON" : 1000
+}
 ```
 ### Stopping the docker process
 In the command line,
