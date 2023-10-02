@@ -34,7 +34,7 @@ http://localhost:8080/add
 
 Request to add points :
 ```
-curl -H "Content-Type: application/json" -d '{"payer":"DANNON",points:300,timestamp:"2020-11-02T14:00:00Z"}" http://localhost:8080/add
+curl -H "Content-Type: application/json" -d '{"payer":"DANNON",points:300,timestamp:"2020-11-02T14:00:00Z"}' http://localhost:8080/add
 ```
 Change the payer name, points, and timestamps accordingly.
 
@@ -68,7 +68,7 @@ http://localhost:8080/balance/
 
 Request : 
 ```
-curl http://localhost:8080/api/balance/
+curl http://localhost:8080/balance/
 ```
 
 Response : 
