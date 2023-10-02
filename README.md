@@ -10,7 +10,7 @@
 - [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) to test the REST API.
 
 
-### Run the Project using Docker
+### Run the project using Docker
 
 - Simply clone the repository. In your console:
 - git clone https://github.com/wenjielee11/fetchBEinterview
@@ -25,7 +25,7 @@ docker run -d -p 8080:8080 spring_server
 ```
 - And that's it! You may use Postman or cURL to test the service routes.
 
-### Run The project using IDE
+### Run the project using IDE
 You need the following:
 - ```Java version 17: https://www.openlogic.com/openjdk-downloads```
 - Install any appropriate Spring Boot IDE.
