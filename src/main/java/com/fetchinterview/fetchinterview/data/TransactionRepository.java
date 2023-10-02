@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fetchinterview.fetchinterview.model.Transaction;
-import com.fetchinterview.fetchinterview.service.TransactionService;
+
 
 /**
  * This class implements the methods to handle transactions that will be called by the REST controller.
