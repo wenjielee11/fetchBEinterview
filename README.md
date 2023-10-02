@@ -29,8 +29,14 @@ docker run -d -p 8080:8080 spring_server
 You need the following:
 - ```Java version 17: https://www.openlogic.com/openjdk-downloads```
 - Install any appropriate Spring Boot IDE.
-- Install [Maven](https://maven.apache.org/install.html) and add it to your environment variable.
+- Run FetchInterviewApplication.java from IDE
 - Use Postman or other tools to test the api.
+  
+### Run the project using cmd/terminal
+- Navigate to the fetchBEinterview folder
+- ```mvn spring-boot:run```
+- Test with the mentioned tools.
+
 ### REST Web Service Routes
 
 1. Add points to a user's account
