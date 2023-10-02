@@ -12,7 +12,10 @@
 
 ### Run the Project using Docker
 
-- Simply clone the repository. In your console: ```cd fetchBEinterview```
+- Simply clone the repository. In your console:
+- git clone https://github.com/wenjielee11/fetchBEinterview
+- ```cd fetchBEinterview```
+- Make sure you have docker installed first!
 - Paste the following code:
 ```
 docker build -t spring_server .
