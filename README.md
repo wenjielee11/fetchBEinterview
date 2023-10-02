@@ -23,8 +23,14 @@ docker build -t spring_server .
 ```
 docker run -d -p 8080:8080 spring_server
 ```
-- And that's it! You may use Postman or Curl to test the service routes.
+- And that's it! You may use Postman or cURL to test the service routes.
 
+### Run The project using IDE
+You need the following:
+- ```Java version 17: https://www.openlogic.com/openjdk-downloads```
+- Install any appropriate Spring Boot IDE.
+- Install [Maven](https://maven.apache.org/install.html) and add it to your environment variable.
+- Use Postman or other tools to test the api.
 ### REST Web Service Routes
 
 1. Add points to a user's account
@@ -34,7 +40,7 @@ http://localhost:8080/add
 
 Request to add points :
 ```
-curl -H "Content-Type: application/json" -d '{payer:"DANNON",points:300,timestamp:"2020-11-02T14:00:00Z"}' http://localhost:8080/add
+curl -H "Content-Type: application/json" -d '{"payer":"DANNON", "points":300,"timestamp":"2020-11-02T14:00:00Z"}' http://localhost:8080/add
 ```
 Change the payer name, points, and timestamps accordingly.
 
@@ -63,12 +69,12 @@ Response :
 
 EndPoint : 
 ```
-http://localhost:8080/balance/
+http://localhost:8080/balance
 ```
 
 Request : 
 ```
-curl http://localhost:8080/balance/
+curl http://localhost:8080/balance
 ```
 
 Response : 
