@@ -79,4 +79,9 @@ Response :
     "DANNON : 1000"
 ]
 ```
-
+### Stopping the docker process
+In the command line,
+```
+docker ps  # Get the container ID
+docker stop <container_id>
+```
