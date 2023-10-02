@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fetchinterview.fetchinterview.data.TransactionRepository;
 import com.fetchinterview.fetchinterview.model.Transaction;
 
+/**
+ * This class contains the REST API that listens to PORT 8080.
+ */
 @RestController
 public class TransactionController {
     TransactionRepository db = new TransactionRepository();

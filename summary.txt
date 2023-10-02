@@ -1,0 +1,30 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+I felt like there would be too many javascript framework submissions. To stand out, I decided to challenge myself and pick up spring boot over the few days. 
+Although I am still inexperienced, I could see that spring boot's library offers a wide range of configurations. On a much larger scale, spring boot could be more
+scalable since it allows very niche configurations. 
+
+Although tempting to use "bun run dev" to make a easy out of the box setup with javascript frameworks, I wanted to get some practice with running docker on spring boot and java applications.
+In the process I learnt alot, such as using maven to produce a .jar file for my dockerfile. 
+
+Many companies out there are still using spring (i.e. Amazon), so I am looking to add such valuable skills to my arsenal. I also learn very well under short deadlines, so this was a good experience for me.
+
+2. What are the advantages and disadvantages of your solution?
+
+Using Java ensures robust and reliable code, since it is a strongly typed language and has compiler errors. This decreases the likelihood of run time errors.
+Spring boot offers dependency injections and ease of integration with other dependencies. Java also allows multi threading, is cross platform compatible, causing it to be highly scalable.
+Although I did not have time, the testing modules that spring boot offers are great, especially dependency injections. It allows high control over the outcome of my code.
+Spring boot also offers security modules for authentication and authorization. 
+
+
+Since Java is verbose, it is much slower to develop a webapp, unlike javascript that is interpreted. Java also lacks front-end features that many modern JS frameworks use, such as React and Vue. Spring
+is not a great tool for light-weight data-intensive enterprise application development, since it is much slower compares to node and express. It also requires more code written due to its verbosity. So projects could 
+get needlessly large for a lightweight application.
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+My most recent hackathon project, Cornucopia, is a great challenge for me as I picked up brand new tools in a short period of time. I had employed React and Next.js to unite small-scale farmers through a Community Supported Agriculture (CSA), 
+growing and selling produce locally to customers. It's facebook for farmers! I learnt to implement an intuitive Tailwind UI with react. I also helped trained a lasso regression model to recommend optimal crop prices based upon historical datasets. 
+I explored MongoDB Atlas to keep track of the crop inventory and manage the delivery logistics, gaining a lot of experience in devops. 
+For my team, I took on the role of project manager, exercising my leadership experience in a computer science related environment. It was a valuable experience for me as I was exposed to some agile and scrum methodologies.
+My team members were unfamiliar with web development. Therefore, I implemented the skeletal React component hierarchies and maintained dynamic state allocations to enable parallel development. This significantly
+increased our project's completition rate. I also challenged myself to leverage the Leaflet API to render an interactive map facilitating efficient delivery logistics, achieved by linking the map API responses to delivery components. 
+In the end, my effort was worth it as I achieved the best agricultural innovation award by John Deere. In the end, I was paid $100 (the prize money) to practice web development! 
